@@ -1,6 +1,3 @@
-
-[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
-
 # Load our dotfiles like ~/.bash_prompt, etc…
 #   ~/.extra can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.
@@ -14,7 +11,7 @@ GRC=`which grc`
 if [ "$TERM" != dumb ] && [ -n "$GRC" ]
     then
         alias colourify="$GRC -es --colour=auto"
-        alias configure='colourify ./configure' 
+        alias configure='colourify ./configure'
         for app in {diff,make,gcc,g++,ping,traceroute}; do
             alias "$app"='colourify '$app
     done
@@ -60,11 +57,6 @@ elif [ -f /etc/bash_completion ]; then
     source /etc/bash_completion;
 fi;
 
-# homebrew completion
-if  which brew > /dev/null; then
-    source `brew --repository`/Library/Contributions/brew_bash_completion.sh
-fi;
-
 # Enable tab completion for `g` by marking it as an alias for `git`
 if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
     complete -o default -o nospace -F _git g;
@@ -79,7 +71,7 @@ complete -W "NSGlobalDomain" defaults
 
 ##
 ## better `cd`'ing
-## 
+##
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
@@ -93,6 +85,3 @@ export PATH="$PATH:/usr/local/heroku/bin"
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
